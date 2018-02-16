@@ -84,5 +84,15 @@ export class UserService {
       return data.user;
     });
   }
+  sendPasswordRecovery(data): Observable<JSON> {
+    console.log(data);
+   return this.apiService.post('/users/sendPasswordRecover/',{data: data})
+  }
+  changePasswordRecover(data): Observable<any>{
+    return this.apiService.post('/users/changePasswordRecover/',{data: data})
+  }
+  changeActivation(data): Observable<any>{
+    return this.apiService.post('/users/activation/',{data: data})
+  }
 
 }

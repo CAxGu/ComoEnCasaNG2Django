@@ -5127,3 +5127,7 @@
       font-family:headertext;
     }
 
+    div.alert{
+      color :red;
+    }
+

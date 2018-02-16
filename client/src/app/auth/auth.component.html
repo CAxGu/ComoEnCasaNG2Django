@@ -6,9 +6,10 @@
         <h1 class="text-xs-center">{{ title }}</h1>
         <p class="text-xs-center">
           <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
-          <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a>
+          <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a><br>
+          <a [routerLink]="['/resetpassword']" *ngIf="authType == 'login'">Forgot a password?</a>
         </p>
-        <list-errors [errors]="errors"></list-errors>
+        <app-list-errors [errors]="errors"></app-list-errors>
         <form [formGroup]="authForm" (ngSubmit)="submitForm()">
           <fieldset [disabled]="isSubmitting">
             <fieldset class="form-group">
@@ -19,6 +20,7 @@
                 type="text"
                 *ngIf="authType == 'register'" />
             </fieldset>
+                 <div class="alert" *ngIf="(authType == 'register') && !authForm.controls['username'].valid && authForm.controls['username'].touched">Este campo es obligatorio y debe contener entre 3 y 15 caracteres</div>
             <fieldset class="form-group">
               <input
                 formControlName="email"
@@ -26,6 +28,7 @@
                 class="form-control form-control-lg"
                 type="text" />
             </fieldset>
+                 <div class="alert" *ngIf="!authForm.controls['email'].valid && authForm.controls['email'].touched">Este campo es obligatorio y debe ser valido</div>
             <fieldset class="form-group">
               <input
                 formControlName="password"
@@ -33,6 +36,7 @@
                 class="form-control form-control-lg"
                 type="password" />
             </fieldset>
+                 <div class="alert" *ngIf="!authForm.controls['password'].valid && authForm.controls['password'].touched">Este campo es obligatorio y debe contener entre 8 y 128 caracteres</div>
             <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}
             </button>
