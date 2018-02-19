@@ -13,6 +13,7 @@ import { ProfileModule } from './profile/profile.module';
 import { SettingsModule } from './settings/settings.module';
 import { LocalesModule} from './locales/locales.module';
 import { ContactModule } from './contact/contact.module';
+import { StripeModule } from './stripe/stripe.module';
 import {
   ApiService,
   ArticlesService,
@@ -27,7 +28,8 @@ import {
   SharedModule,
   TagsService,
   UserService,
-  ContactService
+  ContactService,
+  CheckoutService
 } from './shared';
 // import { LocalesComponent } from './locales/locales.component';
 /* import { CategoriasComponent } from './categorias/categorias.component'; */
@@ -56,7 +58,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     SettingsModule,
     HttpModule,
     LocalesModule,
-    ContactModule
+    ContactModule,
+    StripeModule
   ],
   providers: [
     ApiService,
@@ -68,7 +71,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     ProfilesService,
     TagsService,
     UserService,
-    LocalesService
+    LocalesService,
+    CheckoutService
   ],
   bootstrap: [AppComponent]
 })

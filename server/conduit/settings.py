@@ -50,7 +50,8 @@ INSTALLED_APPS = [
     'conduit.apps.profiles',
     'conduit.apps.categorias',
     'conduit.apps.locales',
-    'conduit.apps.contact'
+    'conduit.apps.contact',
+    'conduit.apps.checkout'
 ]
 
 MIDDLEWARE = [
@@ -161,3 +162,4 @@ REST_FRAMEWORK = {
 
 EMAIL_BACKEND = 'sgbackend.SendGridBackend'
 SENDGRID_API_KEY = os.environ.get('SECRET_KEY_SENDGRID') 
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET')

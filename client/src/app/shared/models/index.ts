@@ -6,3 +6,4 @@ export * from './profile.model';
 export * from './user.model';
 export * from './categorias.model';
 export * from './locales.model';
+export * from './producto.model';

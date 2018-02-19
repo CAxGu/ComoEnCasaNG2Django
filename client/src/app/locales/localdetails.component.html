@@ -1,5 +1,5 @@
 <section class="home-page">
-    <div class="container page">
+    <div class="container">
         <div class="row">
             <div>
                 <a routerLink="/{{local.categoria}}"
@@ -31,6 +31,64 @@
                 <div class="list_paginator" >
                 </div>
             </section>
+           
         </div>
+
+
+        <div class="container">
+
+
+            <div class="card-deck-wrapper">
+              <div class="card-deck">
+          
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Site Traffic</h4>
+                    <p class="card-text"><strong>2,000</strong> Today
+                      <br> 5,500 This Month
+                      <br> 12,500 Last Month</p>
+                    <a href="#" class="btn btn-primary">See Analytics</a>
+                  </div>
+                </div>
+          
+          
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Drafts</h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloremque accusantium at sint quos corrupti.</p>
+                    <a href="#" class="btn btn-primary">See All Drafts</a>
+                  </div>
+                </div>
+          
+                <div class="card">
+                  <div class="card-block">
+                    <h4 class="card-title">Need help?</h4>
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloremque accusantium at sint quos corrupti.</p>
+                    <a href="#" class="btn btn-primary">Support</a>
+                  </div>
+                </div>
+          
+          
+              </div>
+            </div>
+          
+          </div>
+          <!-- /.container -->
+
+        <div class="container">
+
+
+            <div class="card-deck-wrapper">
+              <div class="card-deck">
+          
+                <app-locales-product
+                    *ngFor="let producto of productos"
+                    [producto]="producto">
+                </app-locales-product>
+              </div>
+            </div>
+          
+          </div>
+
     </div>
 </section>
