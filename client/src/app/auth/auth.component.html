@@ -7,7 +7,6 @@
         <p class="text-xs-center">
           <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
           <a [routerLink]="['/register']" *ngIf="authType == 'login' || authType =='social'">Need an account?</a>
-          <a [routerLink]="['/resetpassword']" *ngIf="authType == 'login' || authType =='social'">Forgot a password?</a>
         </p>
         <app-list-errors [errors]="errors"></app-list-errors>
         <form [formGroup]="authForm" (ngSubmit)="submitForm()">
@@ -35,13 +34,12 @@
                 placeholder="Password"
                 class="form-control form-control-lg"
                 type="password" />
+                <div class="alert" *ngIf="!authForm.controls['password'].valid && authForm.controls['password'].touched">Este campo es obligatorio y debe contener entre 8 y 128 caracteres</div>
             </fieldset>
-<<<<<<< HEAD
+            <a [routerLink]="['/resetpassword']" *ngIf="authType == 'login' || authType =='social'">Forgot your password?</a>
             <fieldset>
-=======
-                 <div class="alert" *ngIf="!authForm.controls['password'].valid && authForm.controls['password'].touched">Este campo es obligatorio y debe contener entre 8 y 128 caracteres</div>
->>>>>>> 677d7fe3a9da5c5ad8b22d1d71a28ce4ea44d601
-            <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
+                 <!-- <div class="alert" *ngIf="!authForm.controls['password'].valid && authForm.controls['password'].touched">Este campo es obligatorio y debe contener entre 8 y 128 caracteres</div> -->    
+              <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}
             </button>
            </fieldset>

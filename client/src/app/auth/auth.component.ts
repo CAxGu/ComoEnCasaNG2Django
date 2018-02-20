@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-<<<<<<< HEAD
-import { AuthService } from "angular2-social-login";
-
-=======
->>>>>>> 677d7fe3a9da5c5ad8b22d1d71a28ce4ea44d601
 import { Errors, UserService } from '../shared';
 import { ToastrService } from 'ngx-toastr';
+import { AuthService } from "angular2-social-login";
 
 
 @Component({

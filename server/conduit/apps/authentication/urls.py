@@ -12,3 +12,4 @@ urlpatterns = [
     url(r'^users/changePasswordRecover/?$', ChangePasswordAPIView.as_view()),
     url(r'^users/activation/?$', ActiveUserEmailAPIView.as_view()),
     url(r'^users/social/?$', RegistrationSOCIALAPIView.as_view()),
+]
