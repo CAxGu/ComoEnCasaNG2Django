@@ -23,6 +23,15 @@ class UserManager(BaseUserManager):
 
     def create_user(self, username, email, password=None):
         """Create and return a `User` with an email, username and password."""
+
+        
+        print('********************* hola estoy en el create user normal')
+        print(self)
+        print(username)
+        print(email)
+        print(password)
+
+
         if username is None:
             raise TypeError('Users must have a username.')
 
@@ -30,6 +39,33 @@ class UserManager(BaseUserManager):
             raise TypeError('Users must have an email address.')
 
         user = self.model(username=username, email=self.normalize_email(email))
+        user.set_password(password)
+        user.save()
+
+        print(user)
+
+        return user
+
+
+    def create_user_social(self, username, email, password=None, image='', idToken='', name='', provider=''):
+        """Create and return a `User` from a social login with all info in the object."""
+
+        print('********************* hola estoy en el create social user')
+        print(self)
+        print(username)
+        print(image)
+        print(name)
+        print(provider)
+        ''' print(uid) '''
+
+
+        ''' if username is None:
+            raise TypeError('Users must have a username.')
+
+        if email is None:
+            raise TypeError('Users must have an email address.') '''
+
+        user = self.model(username=username, email=self.normalize_email(email), image=image, idToken=idToken, name=name, provider=provider)
         user.set_password(password)
         user.save()
 
@@ -65,6 +101,10 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
     # the most common form of login credential at the time of writing.
     email = models.EmailField(db_index=True, unique=True)
 
+    provider= models.TextField()
+    idToken = models.TextField()
+    image= models.TextField()
+    name= models.TextField()
     # When a user no longer wishes to use our platform, they may try to delete
     # there account. That's a problem for us because the data we collect is
     # valuable to us and we don't want to delete it. To solve this problem, we

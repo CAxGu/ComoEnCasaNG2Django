@@ -17,17 +17,17 @@
         <a class="nav-link"
           routerLink="/login"
           routerLinkActive="active">
-          Sign in
+          Log in
         </a>
       </li>
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link"
           routerLink="/register"
           routerLinkActive="active">
           Sign up
         </a>
-      </li>
+      </li> -->
 
       <!-- <li class="nav-item">
         
@@ -47,16 +47,21 @@
     <ul *showAuthed="true"
       class="nav navbar-nav pull-xs-right">
 
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a class="nav-link"
           routerLink="/"
           routerLinkActive="active"
           [routerLinkActiveOptions]="{ exact: true }">
           Home
         </a>
-      </li>
-
+      </li> -->
       <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/contact">
+          Contact
+        </a>
+      </li>
+    <!--   <li class="nav-item">
         <a class="nav-link"
           routerLink="/editor"
           routerLinkActive="active">
@@ -70,7 +75,7 @@
           routerLinkActive="active">
           <i class="ion-gear-a"></i>&nbsp;Settings
         </a>
-      </li>
+      </li> -->
 
       <li class="nav-item">
         <a class="nav-link"
@@ -78,6 +83,12 @@
           routerLinkActive="active">
           <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
           {{ currentUser.username }}
+        </a>
+      </li>
+
+      <li class="nav-item btn btn-outline-danger">
+        <a class="nav-link" (click)="logout()">
+          Logout
         </a>
       </li>
 

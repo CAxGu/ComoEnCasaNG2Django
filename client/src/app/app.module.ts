@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 import { HttpModule } from '@angular/http';
+import { Angular2SocialLoginModule } from "angular2-social-login";
+import { dotenv } from '../environments/dotenv';
 
 import { AppComponent } from './app.component';
 import { ArticleModule } from './article/article.module';
@@ -29,8 +31,17 @@ import {
   UserService,
   ContactService
 } from './shared';
-// import { LocalesComponent } from './locales/locales.component';
-/* import { CategoriasComponent } from './categorias/categorias.component'; */
+
+
+let providers = {
+  "google": {
+    "clientId": dotenv.GOOGLEID
+  },
+  "facebook": {
+    "clientId": dotenv.FBID,
+    "apiVersion": "v2.4"
+  }
+};
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: true });
 
@@ -40,8 +51,6 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    // LocalesComponent,
-    // CategoriasComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +65,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     SettingsModule,
     HttpModule,
     LocalesModule,
-    ContactModule
+    ContactModule,
+    Angular2SocialLoginModule
   ],
   providers: [
     ApiService,
@@ -74,3 +84,4 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
 })
 export class AppModule { }
 
+Angular2SocialLoginModule.loadProvidersScripts(providers);

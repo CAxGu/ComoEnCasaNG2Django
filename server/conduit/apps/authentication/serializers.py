@@ -29,8 +29,51 @@ class RegistrationSerializer(serializers.ModelSerializer):
         fields = ['email', 'username', 'password', 'token']
 
     def create(self, validated_data):
+
+        print('*************************** hola estoy en el serializer del register normal')
+        print(self);
+        print('***********************************')
+        print(validated_data)
+        print('**pasamos a crear el usuario ********************************')
+
+
         # Use the `create_user` method we wrote earlier to create a new user.
         return User.objects.create_user(**validated_data)
+
+
+class RegistrationSOCIALSerializer(serializers.ModelSerializer):
+    """Serializers registration requests and creates a new user."""
+
+    # Ensure passwords are at least 8 characters long, no longer than 128
+    # characters, and can not be read by the client.
+    '''password = serializers.CharField(
+        max_length=128,
+        min_length=8,
+        write_only=True
+    )'''
+
+    # The client should not be able to send a token along with a registration
+    # request. Making `token` read-only handles that for us.
+    ''' token = serializers.CharField(max_length=255, read_only=True) '''
+
+    print('*********************** hola majos estoy en el social serializer')
+
+    class Meta:
+
+        model = User
+        # List all of the fields that could possibly be included in a request
+        # or response, including fields specified explicitly above.
+        fields = ['email', 'username', 'image', 'name', 'token', 'provider']
+       
+
+    def create(self, validated_data):
+
+        print('*************************** hola estoy en el serializer')
+        print(self);
+        print('**pasamos a crear el usuario ********************************')
+        print(validated_data)
+        # Use the `create_user` method we wrote earlier to create a new user.
+        return User.objects.create_user_social(**validated_data)
 
 
 class LoginSerializer(serializers.Serializer):

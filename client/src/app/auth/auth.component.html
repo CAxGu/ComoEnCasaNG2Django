@@ -6,7 +6,7 @@
         <h1 class="text-xs-center">{{ title }}</h1>
         <p class="text-xs-center">
           <a [routerLink]="['/login']" *ngIf="authType == 'register'">Have an account?</a>
-          <a [routerLink]="['/register']" *ngIf="authType == 'login'">Need an account?</a>
+          <a [routerLink]="['/register']" *ngIf="authType == 'login' || authType =='social'">Need an account?</a>
         </p>
         <list-errors [errors]="errors"></list-errors>
         <form [formGroup]="authForm" (ngSubmit)="submitForm()">
@@ -33,9 +33,20 @@
                 class="form-control form-control-lg"
                 type="password" />
             </fieldset>
+            <fieldset>
             <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!authForm.valid" type="submit">
               {{ title }}
             </button>
+           </fieldset>
+            <hr  class="hr-text" *ngIf="authType == 'login' || authType =='social'" data-content="OR">
+            <fieldset class="form-group" *ngIf="authType == 'login' || authType =='social'">
+                <a (click)="signIn('google')" *ngIf="authType == 'login' || authType =='social'" class="btn btn-block btn-social btn-google sociallogingoogle"> 
+                  <span class="fa fa-google"></span>  Sign in with Google
+                </a>
+                <a (click)="signIn('facebook')" *ngIf="authType == 'login' || authType =='social'" class="btn btn-block btn-social btn-facebook socialloginfb"> 
+                  <span class="fa fa-facebook"></span>  Sign in with Facebook
+                </a>
+            </fieldset>
           </fieldset>
         </form>
       </div>
