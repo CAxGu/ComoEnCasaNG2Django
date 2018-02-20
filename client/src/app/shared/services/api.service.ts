@@ -3,7 +3,7 @@ import { environment } from '../../../environments/environment';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 
 import { JwtService } from './jwt.service';
 
@@ -27,7 +27,8 @@ export class ApiService {
   }
 
   private formatErrors(error: any) {
-     return Observable.throw(error.json());
+     //return new ErrorObservable(error.error);
+     return Observable.throw(error.error);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {

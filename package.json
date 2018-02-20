@@ -4,13 +4,11 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "prestart": "python server/manage.py makemigrations && python server/manage.py migrate",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "pip install -r server/requirements.txt"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

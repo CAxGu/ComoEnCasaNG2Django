@@ -5127,6 +5127,11 @@
       font-family:headertext;
     }
 
+
+    div.alert{
+      color :red;
+    }
+
     .sociallogingoogle{
       background-color: #DD4B39;
       color:white !important;
