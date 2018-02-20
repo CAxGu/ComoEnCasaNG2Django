@@ -110,18 +110,12 @@ export class AuthComponent implements OnInit {
         this.userService
         .attemptAuth(this.authType, this.credentials)
         .subscribe(
-          data => this.router.navigateByUrl('/'),
+          data => this.router.navigateByUrl('/').then(()=>{location.reload()}),
           err => {
             this.errors = err;
           });
       }
     )
   }
-
-/*   logout(){
-    this._auth.logout().subscribe(
-      (data)=>{console.log(data);this.user=null;}
-    )
-  } */
   
 }

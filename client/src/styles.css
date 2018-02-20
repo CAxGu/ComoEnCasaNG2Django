@@ -5173,3 +5173,14 @@
       color: #818078;
       background-color: #fcfcfa;
     }
+
+
+    .logoutlink{
+      display:inline-block;
+      color:#b85c5c !important;
+    }
+
+
+    .logoutlink:hover{
+      color:white !important;
+    }

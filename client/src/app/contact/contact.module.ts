@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const contactRouting: ModuleWithProviders = RouterModule.forChild([
       {
-        path: 'contact',
+        path: 'contact/form',
         component: ContactComponent,
       }
   ]);
