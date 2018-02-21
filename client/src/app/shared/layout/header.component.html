@@ -8,7 +8,7 @@
 
       <li class="nav-item">
         <a class="nav-link"
-          routerLink="/contact">
+          routerLink="/contact/form">
           Contact
         </a>
       </li>
@@ -56,13 +56,6 @@
         </a>
       </li>
 
-      <li class="nav-item">
-        <a class="nav-link"
-          routerLink="/editor"
-          routerLinkActive="active">
-          <i class="ion-compose"></i>&nbsp;New Article
-        </a>
-      </li>
 
       <li class="nav-item">
         <a class="nav-link"
@@ -81,7 +74,24 @@
         </a>
       </li>
 
-    </ul>
+      <li class="nav-item">
+        <a class="nav-link"
+          routerLink="/contact/form">
+          Contact
+        </a>
+      </li>
 
+      <li class="nav-item">
+        <a class="nav-link fa fa-shopping-cart"
+          routerLink="/cart/shopping">
+          <span class="badge badge-pill badge-danger circle count-items-cart">{{items()}}</span>
+        </a>
+      </li>
+<!--       <li>
+        <app-cart></app-cart>
+      </li> -->
+
+    </ul>
   </div>
+<!--         <app-cart></app-cart> -->
 </nav>

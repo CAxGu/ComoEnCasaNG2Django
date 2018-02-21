@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Locales, Producto, ProductosService} from '../shared';
+import { Locales, Producto, ProductosService, CartService } from '../shared';
 
 
 @Component({
@@ -16,6 +16,7 @@ export class LocalDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productosService: ProductosService,
+    private cartService: CartService,
   ) {}
 
 
@@ -37,5 +38,8 @@ export class LocalDetailsComponent implements OnInit {
         this.productos = productos
         console.log(productos)
       });
+  }
+  addCart(Product){
+    this.cartService.addItem(Product) 
   }
 }

@@ -8,7 +8,7 @@
             <section class="gridlist">
                 <div class="gridlist_Map">
                     <agm-map [latitude]=38.821655 [longitude]=-0.605836>
-                       
+<!--                        <agm-marker [latitude]="{{local.latitud}}" [longitude]="{{local.longitud}}"></agm-marker>  -->
                     </agm-map>
                 </div>
                 <div class="gridlist_cards">
@@ -34,57 +34,22 @@
            
         </div>
 
-
         <div class="container">
 
 
             <div class="card-deck-wrapper">
               <div class="card-deck">
           
-                <div class="card">
+                <div class="card" *ngFor="let producto of productos" >
                   <div class="card-block">
-                    <h4 class="card-title">Site Traffic</h4>
-                    <p class="card-text"><strong>2,000</strong> Today
-                      <br> 5,500 This Month
-                      <br> 12,500 Last Month</p>
-                    <a href="#" class="btn btn-primary">See Analytics</a>
+                    <img src="{{ producto.foto }}" alt="Smiley face" class="card-img-top img-fluid"> 
+                    <h4 class="card-title">{{ producto.nombre }}</h4>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <button class="btn btn-primary" (click)="addCart(producto)" >{{ producto.price }}</button>
                   </div>
-                </div>
-          
-          
-                <div class="card">
-                  <div class="card-block">
-                    <h4 class="card-title">Drafts</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloremque accusantium at sint quos corrupti.</p>
-                    <a href="#" class="btn btn-primary">See All Drafts</a>
-                  </div>
-                </div>
-          
-                <div class="card">
-                  <div class="card-block">
-                    <h4 class="card-title">Need help?</h4>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui, doloremque accusantium at sint quos corrupti.</p>
-                    <a href="#" class="btn btn-primary">Support</a>
-                  </div>
-                </div>
-          
-          
-              </div>
-            </div>
-          
-          </div>
-          <!-- /.container -->
-
-        <div class="container">
-
-
-            <div class="card-deck-wrapper">
-              <div class="card-deck">
-          
-                <app-locales-product
-                    *ngFor="let producto of productos"
-                    [producto]="producto">
-                </app-locales-product>
+                </div> 
+                
+                
               </div>
             </div>
           

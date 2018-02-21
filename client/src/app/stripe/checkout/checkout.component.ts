@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { CheckoutService } from '../../shared';
+import { CheckoutService, CartService } from '../../shared';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
+import { dotenv } from '../../../environments/dotenv';
 
 @Component({
   selector: 'app-checkout',
@@ -17,14 +20,21 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private checkoutService: CheckoutService,
+    private cartService: CartService,
+    private router: Router,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit() {
+
+    if(this.cartService.items.length <= 0){
+      this.router.navigateByUrl('/')
+      this.toastr.warning('Porfavor seleccione algun producto','Cart') 
+    }
+    (<any>window).Stripe.setPublishableKey(dotenv.stripe);
   }
 
   getToken() {
-    this.message = 'Loading...';
-
     (<any>window).Stripe.card.createToken({
       number: this.cardNumber,
       exp_month: this.expiryMonth,
@@ -32,26 +42,22 @@ export class CheckoutComponent implements OnInit {
       cvc: this.cvc
     }, (status: number, response: any) => {
       if (status === 200) {
-        this.message = `Success! Card token ${response.card.id}.`;
-        console.log(`Success! Card token ${response.card.id}.`)
-        console.log(`Success! Card token ${response.id}.`)
-        let data = {stripeToken: response.id};
+        let data = {stripeToken: response.id, cart: this.cartService.items};
         this.checkoutService.checkout(data)
         .subscribe(
           message => {
-            console.log('----okey')
-/*             this.router.navigateByUrl('/')
-            this.toastr.success('El email se ha enviado correctamente','Success') */
+            this.cartService.removeAll();
+            this.router.navigateByUrl('/');
+            this.toastr.success('El pago se ha efectuado correctamente','Success');
           },
           err => {
-            console.log(err)
-/*             this.errors = err;
-            this.toastr.error('Ha habido algun problema por favor intentelo mas tarde','Error')
-            this.isSubmitting = false; */
+            console.log(err);
+            this.toastr.error('Ha habido algun problema por favor intentelo mas tarde','Error');
           }
         );
 
       } else {
+        console.log(response.error.message)
         this.message = response.error.message;
       }
     });

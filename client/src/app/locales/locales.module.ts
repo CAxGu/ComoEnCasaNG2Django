@@ -2,13 +2,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { dotenv } from '../../environments/dotenv';
-
 import { LocalesComponent } from './locales.component';
 import { LocalesListComponent } from './localeslist.component';
 import { LocalDetailsComponent } from './localdetails.component';
 import { SharedModule, ProductosService} from '../shared';
 import {LocalResolver} from './locales-resolver.service';
-import { LocalesProductComponent } from './locales-product/locales-product.component';
 
 const localRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -40,7 +38,7 @@ const localRouting: ModuleWithProviders = RouterModule.forChild([
     LocalesComponent,
     LocalesListComponent,
     LocalDetailsComponent,
-    LocalesProductComponent
+/*     LocalesProductComponent */
   ],
   providers: [
     LocalResolver,

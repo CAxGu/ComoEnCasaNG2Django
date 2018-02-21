@@ -3,5 +3,5 @@ export class Producto {
     nombre: String;
     foto: String;
     descripcion: String;
-    price: Number;
+    price: number;
 }

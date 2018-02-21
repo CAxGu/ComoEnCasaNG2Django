@@ -1,6 +1,7 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2FontawesomeModule } from 'angular2-fontawesome/angular2-fontawesome'
 import { HttpModule } from '@angular/http';
 
@@ -14,7 +15,7 @@ import { SettingsModule } from './settings/settings.module';
 import { LocalesModule} from './locales/locales.module';
 import { ContactModule } from './contact/contact.module';
 import { StripeModule } from './stripe/stripe.module';
-import {
+import { 
   ApiService,
   ArticlesService,
   AuthGuard,
@@ -29,10 +30,9 @@ import {
   TagsService,
   UserService,
   ContactService,
-  CheckoutService
+  CheckoutService,
+  CartService,
 } from './shared';
-// import { LocalesComponent } from './locales/locales.component';
-/* import { CategoriasComponent } from './categorias/categorias.component'; */
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: true });
 
@@ -59,7 +59,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     HttpModule,
     LocalesModule,
     ContactModule,
-    StripeModule
+    StripeModule,
   ],
   providers: [
     ApiService,
@@ -72,7 +72,8 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     TagsService,
     UserService,
     LocalesService,
-    CheckoutService
+    CheckoutService,
+    CartService,
   ],
   bootstrap: [AppComponent]
 })

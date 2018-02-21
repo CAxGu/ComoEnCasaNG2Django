@@ -11,3 +11,4 @@ export * from './locales.service';
 export * from './contact.service';
 export * from './productos.service';
 export * from './checkout.service';
+export * from './cart.service';
