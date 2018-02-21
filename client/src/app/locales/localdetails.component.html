@@ -1,5 +1,5 @@
 <section class="home-page">
-    <div class="container page">
+    <div class="container">
         <div class="row">
             <div>
                 <a routerLink="/{{local.categoria}}"
@@ -8,7 +8,7 @@
             <section class="gridlist">
                 <div class="gridlist_Map">
                     <agm-map [latitude]=38.821655 [longitude]=-0.605836>
-                       
+<!--                        <agm-marker [latitude]="{{local.latitud}}" [longitude]="{{local.longitud}}"></agm-marker>  -->
                     </agm-map>
                 </div>
                 <div class="gridlist_cards">
@@ -31,6 +31,29 @@
                 <div class="list_paginator" >
                 </div>
             </section>
+           
         </div>
+
+        <div class="container">
+
+
+            <div class="card-deck-wrapper">
+              <div class="card-deck">
+          
+                <div class="card" *ngFor="let producto of productos" >
+                  <div class="card-block">
+                    <img src="{{ producto.foto }}" alt="Smiley face" class="card-img-top img-fluid"> 
+                    <h4 class="card-title">{{ producto.nombre }}</h4>
+                    <p class="card-text">{{ producto.descripcion }}</p>
+                    <button class="btn btn-primary" (click)="addCart(producto)" >{{ producto.price }}</button>
+                  </div>
+                </div> 
+                
+                
+              </div>
+            </div>
+          
+          </div>
+
     </div>
 </section>

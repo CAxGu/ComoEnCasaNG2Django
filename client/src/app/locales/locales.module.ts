@@ -2,11 +2,11 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 import { dotenv } from '../../environments/dotenv';
-
 import { LocalesComponent } from './locales.component';
 import { LocalesListComponent } from './localeslist.component';
 import { LocalDetailsComponent } from './localdetails.component';
-import { SharedModule } from '../shared';
+import { SharedModule, ProductosService} from '../shared';
+import {LocalResolver} from './locales-resolver.service';
 
 const localRouting: ModuleWithProviders = RouterModule.forChild([
   {
@@ -15,7 +15,10 @@ const localRouting: ModuleWithProviders = RouterModule.forChild([
   },
   {
     path: 'locales/:id',
-    component: LocalDetailsComponent
+    component: LocalDetailsComponent,
+    resolve: {
+      local: LocalResolver
+    }
   },
   {
     path: ':categoria',
@@ -25,7 +28,7 @@ const localRouting: ModuleWithProviders = RouterModule.forChild([
 
 @NgModule({
   imports: [
-   localRouting,
+    localRouting,
     SharedModule,
     AgmCoreModule.forRoot({
       apiKey: dotenv.GMAPS_KEY
@@ -34,8 +37,12 @@ const localRouting: ModuleWithProviders = RouterModule.forChild([
   declarations: [
     LocalesComponent,
     LocalesListComponent,
-    LocalDetailsComponent
+    LocalDetailsComponent,
+/*     LocalesProductComponent */
   ],
-  providers: []
+  providers: [
+    LocalResolver,
+    ProductosService
+  ]
 })
 export class LocalesModule { }

@@ -106,25 +106,14 @@ class RegistrationSOCIALAPIView(APIView):
 
         print('************************ USER EN JSON ****************************')
         jsondata= json.dumps(serializer.data)
-        print jsondata
+        print(jsondata)
         response_email=serializer.data.get('email')
         response_token=serializer.data.get('token')
         response_username=serializer.data.get('username')
-        print '************************************************* asfasfasffsafa'
-
-        print response_email
-        print response_token
-        print response_username
 
         response_data = {'email':response_email,'token':response_token,'username':response_username}
 
-        print '***hola que tal*'
-        print response_data
-
-
-        # return JsonResponse({'email':serializer.data.get('email'),'token':serializer.data.get('token'),'username':serializer.data.get('username')})
         return Response(response_data, content_type="application/json", status=status.HTTP_201_CREATED)
-        # return HttpResponse(json.dumps(response_data), status=status.HTTP_201_CREATED)
 
 
 

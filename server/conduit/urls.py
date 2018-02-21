@@ -34,5 +34,6 @@ urlpatterns = [
     url(r'^api/', include('conduit.apps.categorias.urls', namespace='categorias')),
     url(r'^api/', include('conduit.apps.locales.urls', namespace='locales')),
     url(r'^api/', include('conduit.apps.contact.urls', namespace='contact')),
+    url(r'^api/', include('conduit.apps.checkout.urls', namespace='checkout')),
 
 ]
