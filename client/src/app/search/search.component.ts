@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  templateUrl: './locales.component.html',
-  styleUrls: ['./locales.component.css']
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-export class LocalesComponent implements OnInit {
+export class SearchComponent implements OnInit {
 
   constructor(
     private router: Router,
@@ -13,5 +13,5 @@ export class LocalesComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
 }

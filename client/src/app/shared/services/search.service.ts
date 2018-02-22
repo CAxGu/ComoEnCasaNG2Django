@@ -3,16 +3,35 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
-import { Locales } from '../models';
 import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+
+
+import { Locales } from '../models';
 
 @Injectable()
-export class LocalesService {
+export class SearchService {
   constructor (
     private apiService: ApiService
   ) {}
 
-  getAll(): Observable<[string]> {
+  dataSearch:any;
+
+  getbySearch(searchData): Observable<[string]> {
+
+    return this.apiService.post('/search/', {search: searchData})
+    .map(
+      data => this.dataSearch=data, 
+    );
+  }
+
+  getDataSearch(){
+    return this.dataSearch;
+  }
+
+/*   getAll(): Observable<[string]> {
     return this.apiService.get('/loclist/')
            .map(data => data.results);
   }
@@ -26,5 +45,5 @@ export class LocalesService {
   getbyCategory(categoria:string): Observable<[string]> {
     return this.apiService.get('/loccat/'+categoria+'/')
            .map(data => data.results);
-  }
+  } */
 }

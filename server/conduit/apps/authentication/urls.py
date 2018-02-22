@@ -1,7 +1,13 @@
 from django.conf.urls import url
 
 from .views import (
-    LoginAPIView, RegistrationAPIView, UserRetrieveUpdateAPIView, PasswordAPIView, ChangePasswordAPIView, ActiveUserEmailAPIView, RegistrationSOCIALAPIView
+    LoginAPIView, 
+    RegistrationAPIView, 
+    UserRetrieveUpdateAPIView, 
+    PasswordAPIView, 
+    ChangePasswordAPIView, 
+    ActiveUserEmailAPIView, 
+    RegistrationSOCIALAPIView
 )
 
 urlpatterns = [

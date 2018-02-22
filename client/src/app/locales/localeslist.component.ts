@@ -21,12 +21,7 @@ export class LocalesListComponent implements OnInit {
   private sub: any;
 
   ngOnInit() {
-
-   /*  this.localesService.getAll()
-    .subscribe(locales => {
-      this.locales = locales
-    }); */
-
+    
     this.sub = this.route.params.subscribe(params => {
       this.categoria = params['categoria'];
     });

@@ -13,6 +13,7 @@ import { AuthModule } from './auth/auth.module';
 import { EditorModule } from './editor/editor.module';
 import { HomeModule } from './home/home.module';
 import { ProfileModule } from './profile/profile.module';
+import { SearchModule } from './search/search.module';
 import { SettingsModule } from './settings/settings.module';
 import { LocalesModule} from './locales/locales.module';
 import { ContactModule } from './contact/contact.module';
@@ -34,6 +35,7 @@ import {
   ContactService,
   CheckoutService,
   CartService,
+  SearchService
 } from './shared';
 
 
@@ -54,7 +56,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
   declarations: [
     AppComponent,
     FooterComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +74,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     ContactModule,
     Angular2SocialLoginModule,
     StripeModule,
+    SearchModule
   ],
   providers: [
     ApiService,
@@ -86,6 +89,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([], { useHash: tru
     LocalesService,
     CheckoutService,
     CartService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })

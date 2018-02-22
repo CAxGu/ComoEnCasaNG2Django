@@ -1,0 +1,29 @@
+<section class="grid_results">
+    <div class="head_result">
+        <h3 id="nofoundText" class="no_found">OH NOES!!. Looks like we dont have what you are looking for, or maybe you have misspeled something? :(</h3>
+        <h3 id="foundedtext" class="founded">We Found <span class="number_result">{{nresults}}</span> results for your search: <span class="number_result">{{busqueda}}</span></h3>
+    </div>
+    <div class="results_list">
+        <section class="gridresult">
+            <div class="gridresult_list">
+                    <a class= "cards_list" *ngFor="let local of locales"  routerLinkActive="active"
+                    [routerLinkActiveOptions]="{ exact: true }"
+                    [routerLink]="['/locales',local.id_local]"> 
+                        <div class="list_imgcontent">
+                        <img src="../../assets/img/locales/{{local.foto}}"/>
+                        </div>
+                        <div class="list_content">
+                            <div>
+                                <h5>{{local.nombre}}</h5>
+                                <span>{{local.telefono}}</span><br>
+                                <span>{{local.poblacion}}</span>
+                            </div>
+                        </div>
+                    </a>
+            </div>
+        </section>
+        <div id="nofound">
+            <img src="../../assets/img/noresult.gif"/>
+        </div>
+        </div>
+</section>

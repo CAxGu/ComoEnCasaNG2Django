@@ -39,49 +39,6 @@
             </fieldset>
               
             </form>
-
-         <!-- <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
-            <fieldset >
-              <fieldset class="form-group">
-                <input
-                  formControlName="name"
-                  placeholder="Nombre"
-                  class="form-control form-control-lg"
-                  type="text"
-                  required
-                   />
-              </fieldset>
-                   <div class="alert" *ngIf="!contactForm.controls['name'].valid && contactForm.controls['name'].touched">Este campo es obligatorio y debe contener entre 3 y 25 caracteres</div>
-              <fieldset class="form-group">
-                <input
-                  formControlName="email"
-                  placeholder="Email"
-                  class="form-control form-control-lg"
-                  type="text" />
-                   <div class="alert" *ngIf="!contactForm.controls['email'].valid && contactForm.controls['email'].touched">Este campo es obligatorio y debe ser valido</div>
-              </fieldset>
-              <fieldset class="form-group">
-                <select formControlName="subject" id="subject" class="form-control-lg form-control">
-                    <option [attr.selected]="true" class="optioncombo" value="d">--- Por favor, seleccione un tema de consulta ---</option>
-                    <option class="optioncombo" value="Info relativa a algun servicio">Info relativa a algun servicio</option>
-                    <option class="optioncombo" value="Contacta con nuestro dpto de programación">Contacta con nuestro dpto de programación</option>
-                    <option class="optioncombo" value="Trabaja con nosotros">Trabaja con nosotros</option>
-                    <option class="optioncombo" value="Haznos sugerencias">Haznos sugerencias</option>
-                    <option class="optioncombo" value="Atendemos tus reclamaciones">Atendemos tus reclamaciones</option>
-                    <option class="optioncombo" value="Te avisamos de nuestras novedades">Te avisamos de nuestras novedades</option>
-                    <option class="optioncombo" value="Otros">Otros</option>
-                </select>
-              </fieldset>
-              <div class="alert" *ngIf="!contactForm.controls['subject'].valid && contactForm.controls['subject'].touched">Por favor seleccione una opcion ...</div>  
-              <fieldset class="form-group">
-                <textarea formControlName="message" cols="30" rows="10" class="form-control-lg form-control" placeholder="Your Message"></textarea>
-              </fieldset>
-                   <div class="alert" *ngIf="!contactForm.controls['message'].valid && contactForm.controls['message'].touched">Este campo es obligatorio y debe contener entre 3 y 481 caracteres</div>
-              <button class="btn btn-lg btn-primary pull-xs-right" [disabled]="!contactForm.valid" type="submit">
-                Enviar
-              </button>
-            </fieldset>
-          </form> -->
         </div>
   
       </div>

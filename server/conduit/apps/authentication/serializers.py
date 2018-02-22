@@ -30,13 +30,6 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        print('*************************** hola estoy en el serializer del register normal')
-        print(self);
-        print('***********************************')
-        print(validated_data)
-        print('**pasamos a crear el usuario ********************************')
-
-
         # Use the `create_user` method we wrote earlier to create a new user.
         return User.objects.create_user(**validated_data)
 
@@ -56,8 +49,6 @@ class RegistrationSOCIALSerializer(serializers.ModelSerializer):
     # request. Making `token` read-only handles that for us.
     ''' token = serializers.CharField(max_length=255, read_only=True) '''
 
-    print('*********************** hola majos estoy en el social serializer')
-
     class Meta:
 
         model = User
@@ -68,10 +59,6 @@ class RegistrationSOCIALSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
 
-        print('*************************** hola estoy en el serializer')
-        print(self);
-        print('**pasamos a crear el usuario ********************************')
-        print(validated_data)
         # Use the `create_user` method we wrote earlier to create a new user.
         return User.objects.create_user_social(**validated_data)
 

@@ -36,7 +36,6 @@ export class LocalDetailsComponent implements OnInit {
     this.productosService.getAll(this.local.id_local)
       .subscribe(productos => {
         this.productos = productos
-        console.log(productos)
       });
   }
   addCart(Product){

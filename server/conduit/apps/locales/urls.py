@@ -7,6 +7,7 @@ from .views import (
     LocalCategoryList,
     ProductsListCreateAPIView,
     ProductsDestroyAPIView,
+    SearchLocationAPIView
 )
 
 
@@ -32,5 +33,6 @@ urlpatterns = [
     url(r'^loccat/(?P<categoria>\D+)/$', LocalCategoryList.as_view()), #APIREST_grafica_DRF
     url(r'^locales/(?P<local_id>[-\w]+)/productos/?$', ProductsListCreateAPIView.as_view()),
     url(r'^locales/(?P<local_id>[-\w]+)/productos/(?P<producto_pk>[\d]+)/?$', ProductsDestroyAPIView.as_view()),
+    url(r'^search/?$', SearchLocationAPIView.as_view()),
     
 ]

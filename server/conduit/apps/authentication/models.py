@@ -24,14 +24,6 @@ class UserManager(BaseUserManager):
     def create_user(self, username, email, password=None):
         """Create and return a `User` with an email, username and password."""
 
-        
-        print('********************* hola estoy en el create user normal')
-        print(self)
-        print(username)
-        print(email)
-        print(password)
-
-
         if username is None:
             raise TypeError('Users must have a username.')
 
@@ -49,21 +41,6 @@ class UserManager(BaseUserManager):
 
     def create_user_social(self, username, email, password=None, image='', idToken='', name='', provider=''):
         """Create and return a `User` from a social login with all info in the object."""
-
-        print('********************* hola estoy en el create social user')
-        print(self)
-        print(username)
-        print(image)
-        print(name)
-        print(provider)
-        ''' print(uid) '''
-
-
-        ''' if username is None:
-            raise TypeError('Users must have a username.')
-
-        if email is None:
-            raise TypeError('Users must have an email address.') '''
 
         user = self.model(username=username, email=self.normalize_email(email), image=image, idToken=idToken, name=name, provider=provider)
         user.set_password(password)

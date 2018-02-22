@@ -60,28 +60,18 @@ export class UserService {
   }
 
   attemptAuth(type, credentials): Observable<User> {
-    //const route = (type === 'login') ? '/login' : '';
-    
-    let route = '';
-    console.log("ieeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 
+    let route = '';
 
     switch (type){
       case 'login':
         route = '/login';
-        console.log("hola estoy en login");
-        console.log(route);
         break;
       case 'social':
-        console.log("hola estoy en el case social");
         route = '/social';
-        console.log(route);
-        console.log("credentials");
-        console.log(credentials);
         break;
       default:
         route = '';
-        console.log(route);
         break;
     }
 
@@ -89,8 +79,6 @@ export class UserService {
     .map(
       data => {
         this.setAuth(data.user);
-        console.log("return final");
-        console.log(data);
         return data;
       }
     );
@@ -111,7 +99,6 @@ export class UserService {
     });
   }
   sendPasswordRecovery(data): Observable<JSON> {
-    console.log(data);
    return this.apiService.post('/users/sendPasswordRecover/',{data: data})
   }
   changePasswordRecover(data): Observable<any>{

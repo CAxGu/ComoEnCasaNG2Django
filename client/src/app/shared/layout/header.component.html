@@ -23,14 +23,31 @@
 
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
-      <select class="form-control">
-        <option class="form-control">Localización</option>
-        <option class="form-control">Comida</option>
-      </select>
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+<!--     <form class="form-inline my-2 my-lg-0" (ngSubmit)="submitSearch()">
+      <fieldset class="form-group">
+          <select class="form-control">
+            <option class="form-control">Localización</option>
+            <option class="form-control">Comida</option>
+          </select>
+          <input class="form-control mr-sm-2" type="text" placeholder="Search" required>
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </fieldset>
     </form>
+ -->
+
+    <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm" (ngSubmit)="submitSearch()">
+        <fieldset [disabled]="isSubmitting">
+          <fieldset class="form-group">
+            <select formControlName="options" [(ngModel)]='defaultValue' class="form-control">
+              <option class="form-control" value="localizacion">Localización</option>
+              <option class="form-control" value="comida">Comida</option>
+            </select>
+            <input formControlName="search" class="form-control mr-sm-2" type="text" placeholder="Search"/>
+        </fieldset>
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+        </fieldset>
+    </form>
+
     <!-- Show this for logged in users -->
     <ul *showAuthed="true"
       class="nav navbar-nav pull-xs-right">
