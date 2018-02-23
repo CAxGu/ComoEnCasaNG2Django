@@ -8,7 +8,15 @@ import { ResultComponent } from './result.component';
 
 const searchRouting: ModuleWithProviders = RouterModule.forChild([
   {
-    path: 'search/results',
+    path: 'search/resultsb1',
+    component: SearchComponent
+  },
+  {
+    path: 'search/resultsb2',
+    component: SearchComponent
+  },
+  {
+    path: 'search/noresult',
     component: SearchComponent
   }
 ]);

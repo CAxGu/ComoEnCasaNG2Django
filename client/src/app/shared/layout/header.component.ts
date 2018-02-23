@@ -5,6 +5,9 @@ import { Router } from '@angular/router';
 import { User } from '../models';
 import { UserService, CartService ,SearchService} from '../services';
 
+declare var jQuery:any;
+declare var $:any;
+
 @Component({
   selector: 'layout-header',
   templateUrl: './header.component.html'
@@ -29,29 +32,12 @@ export class HeaderComponent implements OnInit {
   }
 
   currentUser: User;
-  /* public busqueda:any; */
 
+  
   logout() {
     this.userService.purgeAuth();
     this.router.navigateByUrl('/');
   }
-
-
-  submitSearch(){
-  console.log(this.searchForm.value);
-console.log(this.search);
-  if (this.searchForm.value.search == null || this.searchForm.value.search == ''){
-      this.router.navigateByUrl('/searthich/results')
-  }else {
-    this.searchService
-    .getbySearch(this.searchForm.value)
-    .subscribe(
-      data => {
-        this.router.navigateByUrl('/search/results');
-      });
-  }
-
- }
 
   ngOnInit() {
     this.userService.currentUser.subscribe(
@@ -59,8 +45,22 @@ console.log(this.search);
         this.currentUser = userData;
       }
     )
+
+    $('#searchinput').keypress((e)=>{
+      if(e.which == 13) {
+        $('#formSearch').submit(this.searchService.submitSearch(this.searchForm));
+      }
+    })
+
+    $('#submitbutton').click(()=>{
+      $('#formSearch').submit(this.searchService.submitSearch(this.searchForm));
+    })
+
+   
   }
   items(){
     return this.cartService.items.length > 0 ? this.cartService.items.length : ""
   }
+  
 }
+
